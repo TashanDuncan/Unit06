@@ -19,12 +19,44 @@ startGameBtn.addEventListener('click', () => {
 const phrases = ['king', 'armor king', 'kazuya mishima', 'jin kazama', 'geese howard']
 
 //randomly choose a phrase from the phrases array and split that phrase into a new array of characters.
-const getRandomPhraseAsArray = (phrases) => {
-    const randomNum = Math.floor(Math.random() * phrases.length);
-    console.log(randomNum);
-    const newPhrase = phrases[randomNum];
+const getRandomPhraseAsArray = (arr) => {
+    const randomNum = Math.floor(Math.random() * arr.length);
+    const newPhrase = arr[randomNum];
 
     return newPhrase.split("");
 }
 
-console.log(getRandomPhraseAsArray(phrases));
+
+
+const addPhraseToDisplay = (arr) => {
+
+    for (let i = 0; i < arr.length; i++){
+        if(arr[i] !== ' '){
+            const li = document.createElement('LI');
+            li.innerHTML = `${arr[i]}`;
+            phrase.firstElementChild.appendChild(li)
+            li.className ='letter';
+        } else {
+            const li = document.createElement('LI');
+            li.innerHTML = `${arr[i]}`;
+            phrase.firstElementChild.appendChild(li)
+            li.className = 'space';
+        }
+    }
+}
+
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray); 
+
+const checkLetter = (guess) => {
+    letters = document.querySelectorAll('.letter');
+
+    for (let i = 0; i < letters.length; i++){
+        if( guess === letters[i]){
+            letters[i].className = 'show';
+        } else{
+            return null;
+        }
+    }
+
+}
