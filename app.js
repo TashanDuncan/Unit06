@@ -7,6 +7,8 @@ const phrase = document.querySelector('#phrase');
 //Create a missed variable, initialized to 0, that you’ll use later to keep track of the number of guesses the player has missed
 let missed = 0;
 
+
+
 //Attach a event listener to the “Start Game” button to hide the start screen overlay.
 const startGameBtn = document.querySelector('.btn__reset');
 const overlay = document.querySelector('#overlay');
@@ -49,18 +51,23 @@ const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray); 
 
 const checkLetter = (guess) => {
-    letters = document.querySelectorAll('.letter');
+    const letters = document.querySelectorAll('.letter');
+    let correct = 0;
 
     for (let i = 0; i < letters.length; i++){
         if( guess === letters[i].innerHTML){
             letters[i].classList.add('show');
-            return;
+            correct++
         }
     }
-    return null
+    if(correct === 0){
+        return null
+    }
 }
 
 qwerty.addEventListener('click', (event) => {
+    const tries = document.querySelector('.tries');
+
     if(event.target.tagName ==='BUTTON'){
     event.target.className = 'chosen';
     event.target.disabled = true;
@@ -69,7 +76,12 @@ qwerty.addEventListener('click', (event) => {
 
     if( letterFound === null){
         missed++
+        tries.remove();
     }
     }
 })
+
+/*const checkWin = () => {
+    if
+}*/
 
