@@ -52,11 +52,10 @@ const checkLetter = (guess) => {
     letters = document.querySelectorAll('.letter');
 
     for (let i = 0; i < letters.length; i++){
-        if( guess === letters[i]){
-            letters[i].className = 'show';
-        } else{
-            return null;
+        if( guess === letters[i].innerHTML){
+            letters[i].classList.add('show');
         }
+        
     }
 
 }
@@ -65,5 +64,8 @@ qwerty.addEventListener('click', (event) => {
     if(event.target.tagName ==='BUTTON'){
     event.target.className = 'chosen';
     event.target.disabled = true;
+
+    const letterFound = checkLetter(event.target.innerHTML) 
     }
 })
+
