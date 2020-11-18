@@ -60,3 +60,10 @@ const checkLetter = (guess) => {
     }
 
 }
+
+qwerty.addEventListener('click', (event) => {
+    if(event.target.tagName ==='BUTTON'){
+    event.target.className = 'chosen';
+    event.target.disabled = true;
+    }
+})
