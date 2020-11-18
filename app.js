@@ -54,10 +54,10 @@ const checkLetter = (guess) => {
     for (let i = 0; i < letters.length; i++){
         if( guess === letters[i].innerHTML){
             letters[i].classList.add('show');
+            return;
         }
-        
     }
-
+    return null
 }
 
 qwerty.addEventListener('click', (event) => {
@@ -65,7 +65,11 @@ qwerty.addEventListener('click', (event) => {
     event.target.className = 'chosen';
     event.target.disabled = true;
 
-    const letterFound = checkLetter(event.target.innerHTML) 
+    const letterFound = checkLetter(event.target.innerHTML);
+
+    if( letterFound === null){
+        missed++
+    }
     }
 })
 
