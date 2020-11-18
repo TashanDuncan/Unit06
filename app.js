@@ -9,13 +9,7 @@ let missed = 0;
 
 
 
-//Attach a event listener to the “Start Game” button to hide the start screen overlay.
-const startGameBtn = document.querySelector('.btn__reset');
-const overlay = document.querySelector('#overlay');
 
-startGameBtn.addEventListener('click', () => {
-    overlay.style.visibility = "hidden"
-});
 
 //Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = ['king', 'armor king', 'kazuya mishima', 'jin kazama', 'geese howard']
@@ -47,8 +41,7 @@ const addPhraseToDisplay = (arr) => {
     }
 }
 
-const phraseArray = getRandomPhraseAsArray(phrases);
-addPhraseToDisplay(phraseArray); 
+
 
 const checkLetter = (guess) => {
     const letters = document.querySelectorAll('.letter');
@@ -99,5 +92,13 @@ qwerty.addEventListener('click', (event) => {
     }
 })
 
+//Attach a event listener to the “Start Game” button to hide the start screen overlay.
+const startGameBtn = document.querySelector('.btn__reset');
+const overlay = document.querySelector('#overlay');
 
+const phraseArray = getRandomPhraseAsArray(phrases);
 
+startGameBtn.addEventListener('click', () => {
+    overlay.style.visibility = "hidden"
+    addPhraseToDisplay(phraseArray); 
+});
