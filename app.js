@@ -65,6 +65,20 @@ const checkLetter = (guess) => {
     }
 }
 
+
+const checkWin = () => {
+    const letters = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
+
+    if(letters.length === show.length){
+        overlay.style.visibility = "visible";
+        overlay.className = 'win'
+    } else if (missed >= 5){
+        overlay.style.visibility = "visible";
+        overlay.className = 'lose'
+    }
+}
+
 qwerty.addEventListener('click', (event) => {
     const tries = document.querySelector('.tries');
 
@@ -78,10 +92,9 @@ qwerty.addEventListener('click', (event) => {
         missed++
         tries.remove();
     }
+    checkWin();
     }
 })
 
-/*const checkWin = () => {
-    if
-}*/
+
 
