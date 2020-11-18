@@ -62,16 +62,13 @@ const checkLetter = (guess) => {
 const checkWin = () => {
     const letters = document.querySelectorAll('.letter');
     const show = document.querySelectorAll('.show');
-    const title = document.querySelector('.title');
 
     if(letters.length === show.length){
         overlay.style.visibility = "visible";
         overlay.className = 'win'
-        title.textContent ='You Won!'
     } else if (missed >= 5){
         overlay.style.visibility = "visible";
         overlay.className = 'lose'
-        title.textContent = 'You Lost'
     }
 }
 
