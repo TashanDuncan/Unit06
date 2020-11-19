@@ -9,10 +9,17 @@ let missed = 0;
 
 
 
+//Attach a event listener to the “Start Game” button to hide the start screen overlay.
+const startGameBtn = document.querySelector('.btn__reset');
+const overlay = document.querySelector('#overlay');
 
+startGameBtn.addEventListener('click', () => {
+    overlay.style.visibility = "hidden";
+});
 
 //Create a phrases array that contains at least 5 different phrases as strings.
-const phrases = ['king', 'armor king', 'kazuya mishima', 'jin kazama', 'geese howard']
+const phrases = ['king', 'armor king', 'kazuya mishima', 'jin kazama', 'geese howard', 
+'lars alexandersson', 'alisa bosconovitch', 'ling xiaoyu', 'heihachi mishima']
 
 //randomly choose a phrase from the phrases array and split that phrase into a new array of characters.
 const getRandomPhraseAsArray = (arr) => {
@@ -41,7 +48,8 @@ const addPhraseToDisplay = (arr) => {
     }
 }
 
-
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray); 
 
 const checkLetter = (guess) => {
     const letters = document.querySelectorAll('.letter');
@@ -62,13 +70,16 @@ const checkLetter = (guess) => {
 const checkWin = () => {
     const letters = document.querySelectorAll('.letter');
     const show = document.querySelectorAll('.show');
+    const title = document.querySelector('.title');
 
     if(letters.length === show.length){
         overlay.style.visibility = "visible";
         overlay.className = 'win'
+        title.textContent ='You Won!'
     } else if (missed >= 5){
         overlay.style.visibility = "visible";
         overlay.className = 'lose'
+        title.textContent = 'You Lost'
     }
 }
 
@@ -89,13 +100,5 @@ qwerty.addEventListener('click', (event) => {
     }
 })
 
-//Attach a event listener to the “Start Game” button to hide the start screen overlay.
-const startGameBtn = document.querySelector('.btn__reset');
-const overlay = document.querySelector('#overlay');
 
-const phraseArray = getRandomPhraseAsArray(phrases);
 
-startGameBtn.addEventListener('click', () => {
-    overlay.style.visibility = "hidden"
-    addPhraseToDisplay(phraseArray); 
-});
