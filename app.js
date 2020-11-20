@@ -19,7 +19,7 @@ startGameBtn.addEventListener('click', () => {
 
 //Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = ['king', 'armor king', 'kazuya mishima', 'jin kazama', 'geese howard', 
-'lars alexandersson', 'alisa bosconovitch', 'ling xiaoyu', 'heihachi mishima']
+'lars alexandersson', 'alisa bosconovitch', 'ling xiaoyu', 'heihachi mishima'];
 
 //randomly choose a phrase from the phrases array and split that phrase into a new array of characters.
 const getRandomPhraseAsArray = (arr) => {
@@ -27,7 +27,7 @@ const getRandomPhraseAsArray = (arr) => {
     const newPhrase = arr[randomNum];
 
     return newPhrase.split("");
-}
+};
 
 
 
@@ -37,16 +37,16 @@ const addPhraseToDisplay = (arr) => {
         if(arr[i] !== ' '){
             const li = document.createElement('LI');
             li.innerHTML = `${arr[i]}`;
-            phrase.firstElementChild.appendChild(li)
+            phrase.firstElementChild.appendChild(li);
             li.className ='letter';
         } else {
             const li = document.createElement('LI');
             li.innerHTML = `${arr[i]}`;
-            phrase.firstElementChild.appendChild(li)
+            phrase.firstElementChild.appendChild(li);
             li.className = 'space';
         }
     }
-}
+};
 
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray); 
@@ -58,13 +58,13 @@ const checkLetter = (guess) => {
     for (let i = 0; i < letters.length; i++){
         if( guess === letters[i].innerHTML){
             letters[i].classList.add('show');
-            correct++
+            correct++;
         }
     }
     if(correct === 0){
-        return null
+        return null;
     }
-}
+};
 
 
 const checkWin = () => {
@@ -101,7 +101,7 @@ const checkWin = () => {
         title.textContent = 'You Lost';
         reset();
     }
-}
+};
 
 qwerty.addEventListener('click', (event) => {
     
@@ -118,7 +118,7 @@ qwerty.addEventListener('click', (event) => {
     }
     checkWin();
     }
-})
+});
 
 
 
