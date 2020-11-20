@@ -77,7 +77,8 @@ const checkWin = () => {
         phrase.innerHTML = '<ul></ul>';
         const keys = qwerty.getElementsByTagName('button');
         const newPhrase = getRandomPhraseAsArray(phrases);
-        addPhraseToDisplay(newPhrase); 
+        addPhraseToDisplay(newPhrase);
+        startGameBtn.innerHTML ='Try Again'
 
         for (let i = 0; i < keys.length; i++){
             keys[i].className = '';
