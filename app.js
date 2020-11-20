@@ -84,7 +84,7 @@ const checkWin = () => {
 }
 
 qwerty.addEventListener('click', (event) => {
-    const tries = document.querySelector('.tries');
+    const tries = document.querySelectorAll('.tries');
 
     if(event.target.tagName ==='BUTTON'){
     event.target.className = 'chosen';
@@ -94,7 +94,7 @@ qwerty.addEventListener('click', (event) => {
 
     if( letterFound === null){
         missed++
-        tries.remove();
+        tries[missed - 1].innerHTML = '<img src="images/lostHeart.png" height="35px" width="30px"></img>'
     }
     checkWin();
     }
