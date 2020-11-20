@@ -1,3 +1,21 @@
+// function to create sound
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
+
+const music = new sound('sounds/Tekken 3 - Heihachi Mishima Stage.mp3');
+
 //Get the element with the ID of qwerty and save it to a variable.
 const qwerty = document.querySelector('#qwerty');
 
@@ -15,6 +33,7 @@ const overlay = document.querySelector('#overlay');
 
 startGameBtn.addEventListener('click', () => {
     overlay.style.visibility = "hidden";
+    music.play();
 });
 
 //Create a phrases array that contains at least 5 different phrases as strings.
