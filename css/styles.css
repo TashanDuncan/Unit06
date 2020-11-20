@@ -79,7 +79,7 @@ button {
 /* Phrase */
 
 .letter {
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-large);
   height: 65px;
   width: 65px;
   padding: 20px 1px 0 1px;
@@ -96,7 +96,9 @@ button {
 
 .show {
   color: #000;
+  font-size: var(--font-size-medium);
   background-color: #76CE82;
+  transition: all 0.2s ease-out;
 }
 
 /* Keyboard */
