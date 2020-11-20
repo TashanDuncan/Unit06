@@ -17,14 +17,27 @@ function sound(src) {
 const music = new sound('sounds/Tekken 3 - Heihachi Mishima Stage.mp3');
 
 const heihachiPain = [
-new sound('sounds/Heihachi/TEKKEN3_00413.wav'), 
-new sound('sounds/Heihachi/TEKKEN3_00414.wav'),
-new sound('sounds/Heihachi/TEKKEN3_00415.wav'),
-new sound('sounds/Heihachi/TEKKEN3_00416.wav'),
-new sound('sounds/Heihachi/TEKKEN3_00417.wav'),
-new sound('sounds/Heihachi/TEKKEN3_00426.wav'),
-new sound('sounds/Heihachi/TEKKEN3_00428.wav')
+    new sound('sounds/Heihachi/TEKKEN3_00413.wav'), 
+    new sound('sounds/Heihachi/TEKKEN3_00414.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00415.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00416.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00417.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00427.wav')
 ];
+
+const heihachiHit = [
+    new sound('sounds/Heihachi/TEKKEN3_00418.wav'), 
+    new sound('sounds/Heihachi/TEKKEN3_00419.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00422.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00424.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00425.wav'),
+    new sound('sounds/Heihachi/TEKKEN3_00429.wav')
+    ];
+
+const heihachiScream = new sound('sounds/Heihachi/TEKKEN3_00426.wav');
+
+const heihachiWin = new sound('sounds/Heihachi/TEKKEN3_00428.wav');
+
 
 //Get the element with the ID of qwerty and save it to a variable.
 const qwerty = document.querySelector('#qwerty');
@@ -37,13 +50,15 @@ let missed = 0;
 
 const tries = document.querySelectorAll('.tries');
 
+
+
 //Attach a event listener to the “Start Game” button to hide the start screen overlay.
 const startGameBtn = document.querySelector('.btn__reset');
 const overlay = document.querySelector('#overlay');
 
 startGameBtn.addEventListener('click', () => {
     overlay.style.visibility = "hidden";
-    //music.play();
+    music.play();
 });
 
 //Create a phrases array that contains at least 5 different phrases as strings.
@@ -63,10 +78,11 @@ const phrases = [
 ];
 
 //randomly choose a phrase from the phrases array and split that phrase into a new array of characters.
-const getRandomPhraseAsArray = (arr) => {
-    const randomNum = Math.floor(Math.random() * arr.length);
-    const newPhrase = arr[randomNum];
+const randomNum = (arr) => Math.floor(Math.random() * arr.length);
 
+const getRandomPhraseAsArray = (arr) => {
+    
+    const newPhrase = arr[randomNum(arr)];
     return newPhrase.split("");
 };
 
@@ -94,17 +110,23 @@ addPhraseToDisplay(phraseArray);
 
 const checkLetter = (guess) => {
     const letters = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
     let correct = 0;
 
     for (let i = 0; i < letters.length; i++){
         if( guess === letters[i].innerHTML){
             letters[i].classList.add('show');
             correct++;
+            if(letters.length > (show.length + 1)){
+            heihachiHit[randomNum(heihachiHit)].play();
+            }
         }
     }
     if(correct === 0){
-        const randomNum = Math.floor(Math.random() * heihachiPain.length);
-        heihachiPain[randomNum].play();
+        
+        if(missed < 4){
+            heihachiPain[randomNum(heihachiPain)].play();
+        }
         return null;
     }
 };
@@ -137,11 +159,13 @@ const checkWin = () => {
         overlay.style.visibility = "visible";
         overlay.className = 'win';
         title.textContent ='You Won!';
+        heihachiWin.play();
         reset();
     } else if (missed >= 5){
         overlay.style.visibility = "visible";
         overlay.className = 'lose';
         title.textContent = 'You Lost';
+        heihachiScream.play();
         reset();
     }
 };
