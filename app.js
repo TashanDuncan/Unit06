@@ -16,6 +16,16 @@ function sound(src) {
 
 const music = new sound('sounds/Tekken 3 - Heihachi Mishima Stage.mp3');
 
+const heihachiPain = [
+new sound('sounds/TEKKEN3_00413.wav'), 
+new sound('sounds/TEKKEN3_00414.wav'),
+new sound('sounds/TEKKEN3_00415.wav'),
+new sound('sounds/TEKKEN3_00416.wav'),
+new sound('sounds/TEKKEN3_00417.wav'),
+new sound('sounds/TEKKEN3_00426.wav'),
+new sound('sounds/TEKKEN3_00428.wav')
+];
+
 //Get the element with the ID of qwerty and save it to a variable.
 const qwerty = document.querySelector('#qwerty');
 
@@ -37,8 +47,20 @@ startGameBtn.addEventListener('click', () => {
 });
 
 //Create a phrases array that contains at least 5 different phrases as strings.
-const phrases = ['king', 'armor king', 'kazuya mishima', 'jin kazama', 'geese howard', 
-'lars alexandersson', 'alisa bosconovitch', 'ling xiaoyu', 'heihachi mishima'];
+const phrases = [
+'king',
+'armor king',
+'jin kazama',
+'ling xiaoyu',
+'heihachi mishima',
+'eddie gordo',
+'yoshimitsu',
+'hwoarang',
+'paul phoenix',
+'lei wulong',
+'tiger jackson',
+'marshall law'
+];
 
 //randomly choose a phrase from the phrases array and split that phrase into a new array of characters.
 const getRandomPhraseAsArray = (arr) => {

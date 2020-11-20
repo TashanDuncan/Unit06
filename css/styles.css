@@ -27,6 +27,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: url("../HeihachiMishimaImage.jpg");
 }
 
 li, ol, ul {
