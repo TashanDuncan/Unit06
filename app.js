@@ -38,6 +38,21 @@ const heihachiScream = new sound('sounds/Heihachi/TEKKEN3_00426.wav');
 
 const heihachiWin = new sound('sounds/Heihachi/TEKKEN3_00428.wav');
 
+//Mute sound option
+const soundButton = document.querySelector('#sound');
+
+function isPlaying(audelem) { return !audelem.paused; }
+
+
+soundButton.addEventListener('click', (event) =>{
+    if(isPlaying(document.getElementsByTagName('audio')[0])){
+        music.stop()
+        event.target.classList = "fas fa-volume-mute fa-3x"
+    } else {
+        music.play()
+        event.target.classList = "fas fa-volume-up fa-3x"
+    }
+})
 
 //Get the element with the ID of qwerty and save it to a variable.
 const qwerty = document.querySelector('#qwerty');
