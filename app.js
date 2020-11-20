@@ -17,13 +17,13 @@ function sound(src) {
 const music = new sound('sounds/Tekken 3 - Heihachi Mishima Stage.mp3');
 
 const heihachiPain = [
-new sound('sounds/TEKKEN3_00413.wav'), 
-new sound('sounds/TEKKEN3_00414.wav'),
-new sound('sounds/TEKKEN3_00415.wav'),
-new sound('sounds/TEKKEN3_00416.wav'),
-new sound('sounds/TEKKEN3_00417.wav'),
-new sound('sounds/TEKKEN3_00426.wav'),
-new sound('sounds/TEKKEN3_00428.wav')
+new sound('sounds/Heihachi/TEKKEN3_00413.wav'), 
+new sound('sounds/Heihachi/TEKKEN3_00414.wav'),
+new sound('sounds/Heihachi/TEKKEN3_00415.wav'),
+new sound('sounds/Heihachi/TEKKEN3_00416.wav'),
+new sound('sounds/Heihachi/TEKKEN3_00417.wav'),
+new sound('sounds/Heihachi/TEKKEN3_00426.wav'),
+new sound('sounds/Heihachi/TEKKEN3_00428.wav')
 ];
 
 //Get the element with the ID of qwerty and save it to a variable.
@@ -43,7 +43,7 @@ const overlay = document.querySelector('#overlay');
 
 startGameBtn.addEventListener('click', () => {
     overlay.style.visibility = "hidden";
-    music.play();
+    //music.play();
 });
 
 //Create a phrases array that contains at least 5 different phrases as strings.
@@ -103,6 +103,8 @@ const checkLetter = (guess) => {
         }
     }
     if(correct === 0){
+        const randomNum = Math.floor(Math.random() * heihachiPain.length);
+        heihachiPain[randomNum].play();
         return null;
     }
 };
