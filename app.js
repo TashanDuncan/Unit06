@@ -74,7 +74,11 @@ const overlay = document.querySelector('#overlay');
 startGameBtn.addEventListener('click', () => {
     overlay.style.visibility = "hidden";
     music.play();
-});
+    if(soundButton.className === 'fas fa-volume-mute fa-3x'){
+        music.stop();
+    }
+    
+})
 
 //Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = [
