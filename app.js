@@ -83,7 +83,6 @@ startGameBtn.addEventListener('click', () => {
 //Create a phrases array that contains at least 5 different phrases as strings.
 const phrases = [
 'king',
-'armor king',
 'jin kazama',
 'ling xiaoyu',
 'heihachi mishima',
@@ -93,7 +92,15 @@ const phrases = [
 'paul phoenix',
 'lei wulong',
 'tiger jackson',
-'marshall law'
+'marshall law',
+'nina williams',
+'doctor bosconovitch',
+'bryan fury',
+'julia chang',
+'mokujin',
+'ogre',
+'gon',
+'true ogre'
 ];
 
 //randomly choose a phrase from the phrases array and split that phrase into a new array of characters.
